@@ -12,4 +12,5 @@ class OrtuController extends Controller
     	$ortu = Ortu::find($id);
     	return view('ortu.profile', ['ortu' => $ortu ]);
     }
+
 }

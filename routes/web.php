@@ -18,4 +18,6 @@ Route::get('/', function () {
 
 Route::resource('crud', 'CrudsController');
 
+Route::get('/search', 'CrudsController@search');
+
 Route::get('/ortu/{id}/profile', 'OrtuController@profile');

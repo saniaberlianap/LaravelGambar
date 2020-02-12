@@ -13,8 +13,16 @@ class CrudsController extends Controller
      */
     public function index()
     {
-        $data = Crud::latest()->paginate(5);
-        return view('index', compact('data'))->with('i', (request()->input('page', 1) - 1) * 5 );
+        
+        // if ($request->has('cari')){
+        //     $data=Crud::where('first_name','LIKE','%'.$request->cari.'%')->get();
+        // }else{
+        //     $data = Crud::latest()->paginate(5);
+        // return view('index', compact('data'))->with('i', (request()->input('page', 1) - 1) * 5 );
+        // }
+
+        $data = Crud::latest()->paginate(3);
+        return view('index', compact('data'))->with('i', (request()->input('page', 1) - 1) * 3 );
     }
 
     /**
@@ -27,6 +35,12 @@ class CrudsController extends Controller
         return view('create');
     }
 
+    public function search(Request $request)
+    {
+        $search = $request->get('search');
+        $data = Crud::where('first_name', 'like', '%'.$search.'%')->paginate(7);
+        return view('index', ['data' => $data]);
+    }
     /**
      * Store a newly created resource in storage.
      *
