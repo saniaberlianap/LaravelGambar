@@ -1,6 +1,8 @@
-@extends('parent')
+@extends('layouts.app')
 
-@section('main')
+
+
+@section('content')
 
 
 
